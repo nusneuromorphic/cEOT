@@ -1,5 +1,6 @@
-function [] = track_cEOT(filenamebin)
+function [] = track_cEOT(filenamebin, verbose, show_frame)
 
+close all;
 %% load and prepare the data
 fprintf('Loading bin file...\n\n');
 TD = read_linux([filenamebin, '.bin']);
@@ -22,8 +23,11 @@ for jj = 1:num_trackers
 end
 
 %% init constants and variables
-clf
-hold on
+if show_frame == 1
+    clf
+    hold on
+end
+
 img_back = ones(max(TD.y),max(TD.x))*0.5;
 frame_length = 1e6/24;
 track_frame_length = 66e3;
@@ -32,9 +36,6 @@ frame_time = TD.ts(1);
 last_index = 1;
 timestep = 0.03;                                                            % in terms of events for occlusion detection
 
-show_frame = 0;
-save_video = 0;
-verbose = 0;
 track_frame_num = 1;
 k=1;
 i=1;
@@ -307,7 +308,7 @@ for ii = 1:length(TD.ts)
             drawnow
         end
         
-        if save_video == 1
+        if show_frame == 1
             vid(k) = getframe;
         end
         k = k+1;
@@ -358,7 +359,7 @@ for ii = 1:length(TD.ts)
     end
 end
 
-if save_video == 1
+if show_frame == 1
     SaveMovie(vid, [filenamebin '_Vid_Occ'])
 end
 
@@ -390,6 +391,3 @@ for i = 1:length(tracks)
     end
 end
 fclose(fileID);
-clf
-
-disp('>>>>>>>>>>>>>>>>>>>>>>>>>> Done!');
