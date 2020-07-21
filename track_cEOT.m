@@ -60,21 +60,26 @@ for ii = 1:length(TD.ts)
     if verbose == 1
         fprintf('Event at timestamp: %d\n', TD.ts(ii));
     else
-        if v_count == 50
-            fprintf('\n.');
-            vv_count = vv_count + 1;
-            if vv_count == v_count
-                vv_count = 0;
-            end
-            v_count = 0;
-        else
-            if v_count == vv_count
-                fprintf('*');
-            else
-                fprintf('.');
-            end
-        end
-        v_count = v_count + 1;
+%         if v_count == 50
+%             fprintf('\n.');
+%             vv_count = vv_count + 1;
+%             if vv_count == v_count
+%                 vv_count = 0;
+%             end
+%             v_count = 0;
+%         else
+%             if v_count == vv_count
+%                 fprintf('*');
+%             else
+%                 fprintf('.');
+%             end
+%         end
+%         v_count = v_count + 1;
+        pattern_ev = "..................................................";
+%         fprintf("%d - %d\n", TD.y(ii), mod(TD.y(ii), 50));
+        pattern_ev{1}(mod(TD.y(ii), 50)+1) = '*';
+        pattern_ev = char(pattern_ev);
+        fprintf("%s\n", pattern_ev);
     end
     
     %% compute distance for each tracker and check whether it is within range
