@@ -21,3 +21,17 @@ track_cEOT('test_file', 0, 0);
 The output of the process is an annotation file in text format.
 
 An example script is included along with a short sample recording in bin format. 
+
+## Citation ##
+Andres Ussa, Chockalingam Senthil Rajen, Deepak Singla, Jyotibdha Acharya, Gideon Fu Chuanrong, Arindam Basu and Bharath Ramesh, "A Hybrid Neuromorphic Object Tracking and Classification Framework for Real-time Systems," arXiv:2007.11404 [cs.CV], 2020.
+
+```bibtex
+@misc{ussa2020hybrid,
+    title={A Hybrid Neuromorphic Object Tracking and Classification Framework for Real-time Systems},
+    author={Andres Ussa and Chockalingam Senthil Rajen and Deepak Singla and Jyotibdha Acharya and Gideon Fu Chuanrong and Arindam Basu and Bharath Ramesh},
+    year={2020},
+    eprint={2007.11404},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV}
+}
+```
